@@ -17,7 +17,7 @@ async def lifespan(app: FastAPI):
     # shutdown（目前不用写）
 
 
-app = FastAPI(title=settings.app_name, lifespan=lifespan)
+app = FastAPI(title=settings.APP_NAME, lifespan=lifespan)
 
 app.include_router(auth_router)
 app.include_router(users_router)

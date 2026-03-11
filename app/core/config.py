@@ -1,14 +1,20 @@
-from pydantic_settings import BaseSettings
+import os
+from dotenv import load_dotenv
 
+load_dotenv()
 
-from pydantic_settings import BaseSettings, SettingsConfigDict
-class Settings(BaseSettings):
-    app_name: str = "fastapi-user-service"
-    database_url: str = "sqlite:///./app.db"
-    jwt_secret: str = "change_me"
-    jwt_alg: str = "HS256"
-    access_token_expire_minutes: int = 120
+class Settings:
+    APP_NAME: str = os.getenv("APP_NAME", "FastAPI User Service")
+    APP_ENV: str = os.getenv("APP_ENV", "development")
+    DEBUG: bool = os.getenv("DEBUG", "False").lower() == "true"
 
-    model_config = SettingsConfigDict(env_file=".env")
+    SECRET_KEY: str = os.getenv("SECRET_KEY", "change_me")
+    ALGORITHM: str = os.getenv("ALGORITHM", "HS256")
+    ACCESS_TOKEN_EXPIRE_MINUTES: int = int(
+        os.getenv("ACCESS_TOKEN_EXPIRE_MINUTES", 30)
+    )
+
+    DATABASE_URL: str = os.getenv("DATABASE_URL", "sqlite:///./app.db")
+
 
 settings = Settings()
