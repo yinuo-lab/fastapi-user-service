@@ -4,11 +4,9 @@ from app.core.config import settings
 from app.db.session import engine
 from app.db.base import Base
 
-from app.models.user import User  # noqa: F401
+from app.models.user import User  ,Task# noqa: F401
 from app.api.routers.auth import router as auth_router
 from app.api.routers.users import router as users_router
-
-
 @asynccontextmanager
 async def lifespan(app: FastAPI):
     # startup

@@ -53,6 +53,8 @@ DATABASE_URL | sqlite:///./test.db | app/db/session.py | 是
 
 cd /d D:\fastapi\fastapi_user_service
 .venv\Scripts\activate
+python -m .venvvenv
+source venv/bin/activate 
 3. 安装依赖：pip install -r requirements.txt
 4. 启动项目：uvicorn app.main:app --reload
 5. 打开 http://127.0.0.1:8000/docs
